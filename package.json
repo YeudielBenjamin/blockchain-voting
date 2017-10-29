@@ -1,0 +1,37 @@
+{
+  "name": "blockchain-voting",
+  "version": "0.0.1",
+  "description": "A blockchain based online voting system with RethinkDB and BigchainDB",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YeudielBenjamin/blockchain-voting.git"
+  },
+  "keywords": [
+    "blockchain",
+    "blockchain-voting",
+    "online-voting",
+    "bigchaindb",
+    "rethinkdb",
+    "e-voting",
+    "i-voting",
+    "voting",
+    "nodejs"
+  ],
+  "author": "Yeudiel Benjamín Vázquez Hernández",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YeudielBenjamin/blockchain-voting/issues"
+  },
+  "homepage": "https://github.com/YeudielBenjamin/blockchain-voting#readme",
+  "dependencies": {
+    "bigchaindb-driver": "^0.3.0",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
