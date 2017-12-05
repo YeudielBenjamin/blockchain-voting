@@ -8,6 +8,7 @@ const PORT = 3000;
 var user_routes         = require("./routes/user");
 var transaction_routes  = require("./routes/transaction");
 var election_routes     = require("./routes/election");
+var candidate_routes    = require("./routes/candidate");
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -28,6 +29,7 @@ app.get('/', function (req, res) {
 app.use("/api", user_routes);
 app.use("/api", transaction_routes);
 app.use("/api", election_routes);
+app.use("/api", candidate_routes);
 
 app.listen(PORT, function () {
   console.log(`App listening on port ${PORT}!`);

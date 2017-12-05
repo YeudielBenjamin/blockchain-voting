@@ -13,12 +13,15 @@ function createPair(req, res){
 }
 
 function newTransaction(req, res){
-    let vote = req.body.vote;
+    let vote = req.body.vote.vote;
+    let candidateId = req.body.vote.candidateId;
+    let election = req.body.vote.election;
+    let electionId = req.body.vote.electionId;
     let publicKey = req.body.publicKey;
     let privateKey = req.body.privateKey;
 
     const tx = bigchain.Transaction.makeCreateTransaction(
-        { vote: vote },
+        { election_id: electionId, election_name: election, vote: vote, candidate_id: candidateId, date: new Date() },
         { what: "Vote" },
         [ bigchain.Transaction.makeOutput(
             bigchain.Transaction.makeEd25519Condition(publicKey))
