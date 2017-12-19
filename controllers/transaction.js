@@ -1,6 +1,6 @@
 "use strict"
 var globalVar   = require("../global");
-const bigchain  =    require('bigchaindb-driver');
+const bigchain  = require('bigchaindb-driver');
 
 function createPair(req, res){
     return res.status(200).send({
@@ -12,6 +12,20 @@ function createPair(req, res){
     });
 }
 
+function getTransactions(req, res){
+    let assetId =  req.params.id;
+    const conn = new bigchain.Connection(globalVar.API_PATH);
+    conn.listTransactions(assetId, "TRANSFER").then(
+        response => {
+            console.log(response);
+            return res.status(200).send(response);
+        },
+        error => {
+            console.error(error);
+            return res.status(500).send(error);
+        }
+    );
+}
 function newTransaction(req, res){
     let vote = req.body.vote.vote;
     let candidateId = req.body.vote.candidateId;
@@ -30,7 +44,6 @@ function newTransaction(req, res){
     );
     const signedTx = bigchain.Transaction.signTransaction(tx, privateKey);
     const conn = new bigchain.Connection(globalVar.API_PATH);
-    console.log(signedTx);
     conn.postTransaction(signedTx)
         .then(
             response => {
@@ -49,7 +62,13 @@ function newTransaction(req, res){
         );
 }
 
+function search(req, res){
+    const conn = new bigchain.Connection(globalVar.API_PATH);
+    conn.searchAssets();
+}
+
 module.exports = {
     createPair,
-    newTransaction
+    newTransaction,
+    getTransactions
 };

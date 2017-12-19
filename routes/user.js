@@ -8,6 +8,8 @@ var UserController = require("../controllers/user");
 var api = express.Router();
 
 api.post("/login", UserController.login);
-api.post("/register", [md_auth.ensureAuth, md_root.isRoot], UserController.save);
+api.put("/update-password", md_auth.ensureAuth, UserController.updatePassword);
+api.post("/create", [md_auth.ensureAuth, md_root.isRoot], UserController.createUser);
+api.get("/keys", md_auth.ensureAuth, UserController.getKeys);
 
 module.exports = api;

@@ -26,12 +26,11 @@ exports.ensureAuth = function(req, res, next){
         }
     } catch (exception) {
         return res.status(404).send({ 
-            msg: "Unvalid token", 
+            msg: "Invalid token", 
             success: false, 
             data: {}
         });
     }
-
     req.user = payload;
 
 next();

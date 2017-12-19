@@ -8,5 +8,6 @@ var api = express.Router();
 
 api.post("/transaction", md_auth.ensureAuth, TransactionController.newTransaction);
 api.post("/keypair", md_auth.ensureAuth, TransactionController.createPair);
+api.get("/transaction/:id", TransactionController.getTransactions);
 
 module.exports = api;

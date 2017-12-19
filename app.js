@@ -26,7 +26,7 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-app.use("/api", user_routes);
+app.use("/api/user", user_routes);
 app.use("/api", transaction_routes);
 app.use("/api", election_routes);
 app.use("/api", candidate_routes);
